@@ -1,0 +1,55 @@
+{
+    "name": "ROS 2 Workspace humble",
+    "remoteUser": "rosdev",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "USERNAME": "rosdev",
+            "GID": "1000",
+            "UID": "1000",
+            "WORKSPACEFOLDER": "${localWorkspaceFolderBasename}"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "MS-CEINTL.vscode-language-pack-zh-hans",
+                "ms-vscode.cpptools",
+                "ms-vscode.cmake-tools",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "ms-python.debugpy",
+                "ms-python.black-formatter",
+                "Ranch-Hand-Robotics.rde-pack",
+                "ms-vscode.vscode-serial-monitor",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "VisualStudioExptTeam.intellicode-api-usage-examples",
+                "yzhang.markdown-all-in-one",
+                "DavidAnson.vscode-markdownlint",
+                "cweijan.vscode-office"
+            ],
+            "settings": {
+                "C_Cpp.autocomplete": "disabled",
+                "C_Cpp.intelliSenseEngine": "disabled",
+                "clangd.arguments": [
+                    "--fallback-style=Microsoft",
+                    "--header-insertion=never"
+                ],
+                "files.associations": {
+                    "*.rviz": "yaml",
+                    "*.srdf": "xml",
+                    "*.urdf": "xml",
+                    "*.xacro": "xml"
+                },
+                "http.useLocalProxyConfiguration": false,
+                "cmake.ignoreCMakeListsMissing": true
+            }
+        }
+    },
+    "workspaceFolder": "/home/rosdev/${localWorkspaceFolderBasename}",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/rosdev/${localWorkspaceFolderBasename},type=bind",
+    "runArgs": [
+        "--privileged"
+    ]
+}
