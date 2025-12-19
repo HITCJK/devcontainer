@@ -31,7 +31,8 @@ RUN apt install -y ros-noetic-realsense2-camera
 # Install dashgo's dependencies
 COPY ./src/dashgo ./src/dashgo
 RUN rosdep update && rosdep install --from-paths src/dashgo --ignore-src -r -y
-RUN apt install -y ros-noetic-serial ros-noetic-ecl-threads libudev-dev
+RUN apt install -y ros-noetic-serial ros-noetic-ecl-threads ros-noetic-robot-pose-ekf ros-noetic-rgbd-launch libudev-dev udev
+RUN pip install pyserial
 RUN rm -rf /home/$USERNAME/$WORKSPACEFOLDER/src/dashgo
 
 # Create and switch to user
@@ -40,6 +41,13 @@ RUN groupadd -g $GID $USERNAME \
     && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 RUN adduser $USERNAME video
 RUN adduser $USERNAME dialout
+
+# different groups for arch
+RUN groupadd -g 984 archvedio \
+    && groupadd -g 985 archuucp \
+    && adduser $USERNAME archvedio \
+    && adduser $USERNAME archuucp
+
 USER $USERNAME
 
 # Create workspace so that user own this directory

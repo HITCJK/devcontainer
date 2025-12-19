@@ -22,8 +22,6 @@
                 "ms-python.debugpy",
                 "ms-python.black-formatter",
                 "ms-vscode.vscode-serial-monitor",
-                "VisualStudioExptTeam.vscodeintellicode",
-                "VisualStudioExptTeam.intellicode-api-usage-examples",
                 "yzhang.markdown-all-in-one",
                 "DavidAnson.vscode-markdownlint",
                 "cweijan.vscode-office",
